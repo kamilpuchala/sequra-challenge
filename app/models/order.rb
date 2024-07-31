@@ -9,7 +9,7 @@ class Order < ApplicationRecord
 
   validates_presence_of :amount, :date, :fee_percentage
   validates :fee_percentage, numericality: {greater_than_or_equal_to: 0.85, less_than_or_equal_to: 1}
-  before_save :set_fee_percentage
+  before_validation :set_fee_percentage, on: :create
 
   private
 
