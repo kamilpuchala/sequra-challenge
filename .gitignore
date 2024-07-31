@@ -22,7 +22,9 @@
 /tmp/pids/*
 !/tmp/pids/
 !/tmp/pids/.keep
+/tmp/initial_data/*
 
+.DS_Store
 # Ignore storage (uploaded files in development and any SQLite databases).
 /storage/*
 !/storage/.keep
