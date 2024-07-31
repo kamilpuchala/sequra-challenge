@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_31_142624) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_31_144301) do
   create_table "merchants", force: :cascade do |t|
     t.string "external_id", null: false
     t.string "reference", null: false
@@ -26,4 +26,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_31_142624) do
     t.check_constraint "disbursement_frequency IN ('DAILY', 'WEEKLY')", name: "disbursement_frequency_check"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.decimal "amount", precision: 10, scale: 2, null: false
+    t.date "date", null: false
+    t.integer "merchant_id", null: false
+    t.decimal "fee_percentage", precision: 4, scale: 2, default: "0.0", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["merchant_id"], name: "index_orders_on_merchant_id"
+  end
+
+  add_foreign_key "orders", "merchants"
 end
