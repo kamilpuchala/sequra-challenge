@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_01_115735) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_01_131211) do
   create_table "disbursements", force: :cascade do |t|
     t.integer "merchant_id", null: false
     t.string "reference", null: false
@@ -28,8 +28,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_01_115735) do
     t.string "email", null: false
     t.date "live_on", null: false
     t.string "disbursement_frequency", null: false
-    t.decimal "minimum_monthly_fee", null: false
-    t.integer "weekday", null: false
+    t.decimal "minimum_monthly_fee", precision: 10, scale: 2, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["external_id"], name: "index_merchants_on_external_id", unique: true

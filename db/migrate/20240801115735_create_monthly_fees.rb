@@ -9,7 +9,7 @@ class CreateMonthlyFees < ActiveRecord::Migration[7.1]
 
       t.timestamps
     end
-    
+
     add_index :monthly_fees, [:merchant_id, :year, :month], unique: true
   end
 end
