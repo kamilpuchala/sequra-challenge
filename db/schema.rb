@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_01_083202) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_01_115735) do
   create_table "disbursements", force: :cascade do |t|
     t.integer "merchant_id", null: false
     t.string "reference", null: false
@@ -37,6 +37,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_01_083202) do
     t.check_constraint "disbursement_frequency IN ('DAILY', 'WEEKLY')", name: "disbursement_frequency_check"
   end
 
+  create_table "monthly_fees", force: :cascade do |t|
+    t.integer "merchant_id", null: false
+    t.integer "year", null: false
+    t.integer "month", null: false
+    t.decimal "fee_to_charge", precision: 10, scale: 2, default: "0.0", null: false
+    t.decimal "charged_fee", precision: 10, scale: 2, default: "0.0", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["merchant_id", "year", "month"], name: "index_monthly_fees_on_merchant_id_and_year_and_month", unique: true
+    t.index ["merchant_id"], name: "index_monthly_fees_on_merchant_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.decimal "amount", precision: 10, scale: 2, null: false
     t.date "date", null: false
@@ -50,6 +62,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_01_083202) do
   end
 
   add_foreign_key "disbursements", "merchants"
+  add_foreign_key "monthly_fees", "merchants"
   add_foreign_key "orders", "disbursements"
   add_foreign_key "orders", "merchants"
 end

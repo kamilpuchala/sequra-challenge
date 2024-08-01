@@ -3,6 +3,7 @@ class Merchant < ApplicationRecord
 
   has_many :orders
   has_many :disbursements
+  has_many :monthly_fees
 
   validates_presence_of :external_id, :reference, :email, :live_on, :disbursement_frequency,
     :minimum_monthly_fee, :weekday
