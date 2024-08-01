@@ -1,0 +1,5 @@
+CreateDisbursementWorker:
+  cron: "0 1 * * *"
+  class: "CreateDisbursementWorker"
+  queue: "default"
+  description: "Create disbursement for all merchants"
