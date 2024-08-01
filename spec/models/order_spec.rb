@@ -8,19 +8,19 @@ RSpec.describe Order, type: :model do
   describe "validations" do
     it { should validate_presence_of(:amount) }
     it { should validate_presence_of(:date) }
-    it { should validate_presence_of(:fee_percentage) }
 
-    it "is valid with a fee_percentage between 0 and 100" do
-      expect(build(:order, fee_percentage: 1.00)).to be_valid
-      expect(build(:order, fee_percentage: 0.85)).to be_valid
-    end
+    it "automatically sets the correct fee_percentage based on the amount" do
+      order1 = build(:order, amount: 30, fee_percentage: 0.84)
+      order2 = build(:order, amount: 150, fee_percentage: 1.84)
+      order3 = build(:order, amount: 400, fee_percentage: 2.84)
 
-    it "is not valid with a fee_percentage less than 0.85" do
-      expect(build(:order, fee_percentage: 0.84)).not_to be_valid
-    end
+      order1.valid?
+      order2.valid?
+      order3.valid?
 
-    it "is not valid with a fee_percentage greater than 1" do
-      expect(build(:order, fee_percentage: 1.01)).not_to be_valid
+      expect(order1.fee_percentage).to eq(1.00)
+      expect(order2.fee_percentage).to eq(0.95)
+      expect(order3.fee_percentage).to eq(0.85)
     end
   end
 end

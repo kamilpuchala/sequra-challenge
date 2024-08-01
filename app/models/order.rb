@@ -6,10 +6,11 @@ class Order < ApplicationRecord
   }
 
   belongs_to :merchant
+  belongs_to :disbursement, optional: true
 
-  validates_presence_of :amount, :date, :fee_percentage
+  validates_presence_of :amount, :date
   validates :fee_percentage, numericality: {greater_than_or_equal_to: 0.85, less_than_or_equal_to: 1}
-  before_validation :set_fee_percentage, on: :create
+  before_validation :set_fee_percentage, if: -> { amount.present? }, on: :create
 
   private
 

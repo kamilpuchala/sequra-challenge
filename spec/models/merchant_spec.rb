@@ -4,6 +4,7 @@ RSpec.describe Merchant, type: :model do
   subject { build(:merchant) }
 
   it { should have_many(:orders) }
+  it { should have_many(:disbursements) }
 
   describe "validations" do
     it { should validate_presence_of(:external_id) }

@@ -2,6 +2,7 @@ class Merchant < ApplicationRecord
   VALID_DISBURSEMENT_FREQUENCIES = ["DAILY", "WEEKLY"]
 
   has_many :orders
+  has_many :disbursements
 
   validates_presence_of :external_id, :reference, :email, :live_on, :disbursement_frequency,
     :minimum_monthly_fee, :weekday
