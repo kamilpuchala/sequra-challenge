@@ -35,6 +35,10 @@ gem "bootsnap", require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 # gem "rack-cors"
 
+# Use sidekiq for async jobs
+gem "sidekiq"
+gem "sidekiq-cron"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "pry"
@@ -45,6 +49,7 @@ group :development, :test do
   gem "shoulda-matchers", require: false
   gem "factory_bot_rails"
   gem "faker"
+  gem "mock_redis", require: false
 end
 
 group :development do

@@ -10,7 +10,8 @@ RSpec.describe Disbursement, type: :model do
     it { should validate_presence_of(:reference) }
     it { should validate_presence_of(:total_amount) }
     it { should validate_presence_of(:total_fees) }
-    
+    it { should validate_presence_of(:reference_date) }
+
     it { should validate_uniqueness_of(:reference) }
   end
 end
