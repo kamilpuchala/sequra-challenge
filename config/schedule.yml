@@ -3,3 +3,8 @@ CreateDisbursementWorker:
   class: "CreateDisbursementWorker"
   queue: "default"
   description: "Create disbursement for all merchants"
+CreateDisbursementWorker:
+    cron: "* 6 1 * *"
+    class: "CreateDisbursementWorker"
+    queue: "default"
+    description: "Create monthly fees for all merchants"
