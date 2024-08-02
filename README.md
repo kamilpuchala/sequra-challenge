@@ -3,7 +3,6 @@
 ## Table of Contents
 1. [Description](#description)
 2. [How to run](#how-to-run)
-    - [Technologies used](#technologies-used)
     - [Steps to run the project](#steps-to-run-the-project)
     - [Endpoints](#endpoints)
     - [Background jobs](#background-jobs)
