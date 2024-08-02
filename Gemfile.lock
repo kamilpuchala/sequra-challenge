@@ -87,6 +87,10 @@ GEM
     crass (1.0.6)
     date (3.3.4)
     diff-lcs (1.5.1)
+    dotenv (3.1.2)
+    dotenv-rails (3.1.2)
+      dotenv (= 3.1.2)
+      railties (>= 6.1)
     drb (2.2.1)
     erubi (1.13.0)
     et-orbi (1.2.11)
@@ -292,6 +296,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  dotenv-rails
   factory_bot_rails
   faker
   mock_redis

@@ -36,5 +36,10 @@ module SequraChallenge
     config.middleware.use ActionDispatch::Cookies
 
     config.middleware.use config.session_store, config.session_options
+    
+    config.time_zone = 'UTC'
+    
+    # Ensure ActiveRecord uses UTC for database storage
+    config.active_record.default_timezone = :utc
   end
 end
