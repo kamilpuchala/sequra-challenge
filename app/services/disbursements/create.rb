@@ -11,8 +11,6 @@ module Disbursements
         raise CantCreateDisbursementForMerchant, "Can't create disbursement for #{merchant.reference} in date #{date}"
       end
 
-      # return if orders.empty?
-
       ::ActiveRecord::Base.transaction do
         disbursement = Disbursement.create!(
           merchant: merchant,
